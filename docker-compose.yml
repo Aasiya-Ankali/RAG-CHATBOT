@@ -1,0 +1,40 @@
+# orchastartes each services 
+# always depend on docker file for some details
+# version: "3.8"
+services:
+  backend:
+    build: ./backend
+    container_name: siemens-rag-backend
+    ports:
+      - "8000:8000"
+    restart: always
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/chroma_data:/app/chroma_data
+      - ./backend/data:/app/data
+
+  frontend:
+    build: ./frontend
+    container_name: siemens-rag-frontend
+    ports:
+      - "5173:5173"
+    restart: always
+    depends_on:
+      - backend
+
+# As Database is already included in the backend , no need to write it again separately
+
+  # db:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_DB: mydatabase
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   restart: always
+# volumes:
+#   db_data:

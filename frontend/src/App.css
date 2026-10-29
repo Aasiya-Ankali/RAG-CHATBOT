@@ -1,0 +1,214 @@
+/* ========================================
+   Global Reset - Remove all margins/padding
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent double scrollbars */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   App Layout - Full Screen
+   ======================================== */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ========================================
+   Sidebar Navigation
+   ======================================== */
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.sidebar-header {
+  padding: 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar-header p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* Navigation Buttons */
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 10px;
+  overflow-y: auto; /* Allow scrolling if many nav items */
+}
+
+.nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: #cbd5e1;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+}
+
+.nav-text {
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+/* ========================================
+   Main Content Area - Full Width
+   ======================================== */
+
+.main-content {
+  flex: 1;
+  overflow-y: auto; /* System scrollbar appears here */
+  overflow-x: hidden;
+  background: #f8fafc;
+}
+
+/* ========================================
+   Analytics Dashboard
+   ======================================== */
+
+.analytics-container {
+  min-height: 100%;
+  padding: 40px;
+}
+
+.analytics-header {
+  margin-bottom: 40px;
+}
+
+.analytics-header h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.analytics-header p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.analytics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-bottom: 40px; /* Extra space at bottom */
+}
+
+.analytics-section {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analytics-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.analytics-section h3 {
+  font-size: 1.3rem;
+  color: #1e293b;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+  }
+
+  .sidebar-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .sidebar-header p,
+  .nav-text {
+    display: none;
+  }
+
+  .nav-btn {
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .analytics-container {
+    padding: 20px;
+  }
+
+  .analytics-header h1 {
+    font-size: 1.5rem;
+  }
+}
